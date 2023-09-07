@@ -1,0 +1,29 @@
+﻿@page "/users"
+@using HomeCookedHub.Shared
+@inject HttpClient Http
+<PageTitle>Users</PageTitle>
+<h3>Users</h3>
+
+@foreach (var user in UserList)
+{
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">@user.Name</h5>
+			<h6 class="card-subtitle mb-2 text-muted">@user.Email</h6>
+			<p class="card-text">@user.Password</p>
+			<p class="card-text">@user.UserType</p>
+		</div>
+	</div>
+}
+
+
+@code {
+	private static List<User> UserList = new List<User>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		UserList = await Http.GetFromJsonAsync<List<User>>("api/User");
+	}
+
+
+}
