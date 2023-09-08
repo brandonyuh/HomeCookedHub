@@ -9,16 +9,18 @@ namespace HomeCookedHub.Server.Services.AuthService
 	public class AuthService : IAuthService
 	{
 		private readonly DataContext _context;
+		private readonly IConfiguration _configuration;
 
-		public AuthService(DataContext context)
+		public AuthService(DataContext context, IConfiguration configuration)
 		{
 			_context = context;
+			_configuration = configuration;
 		}
 
 		//public int GetUserId() => int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
 		//public string GetUserEmail() => _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Name);
 
-		/*
+		
 		public async Task<ServiceResponse<string>> Login(string email, string password)
 		{
 			var response = new ServiceResponse<string>();
@@ -41,7 +43,7 @@ namespace HomeCookedHub.Server.Services.AuthService
 			return response;
 
 		}
-		*/
+		
 
 		private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
 		{
@@ -94,7 +96,7 @@ namespace HomeCookedHub.Server.Services.AuthService
 
 		}
 
-		/*
+		
 		private string CreateToken(User user)
 		{
 			List<Claim> claims = new List<Claim>
@@ -117,7 +119,7 @@ namespace HomeCookedHub.Server.Services.AuthService
 
 			return jwt;
 		}
-		*/
+		
 
 		public async Task<ServiceResponse<bool>> ChangePassword(int userId, string newPassword)
 		{

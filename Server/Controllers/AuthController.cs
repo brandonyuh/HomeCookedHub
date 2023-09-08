@@ -27,7 +27,7 @@ namespace HomeCookedHub.Server.Controllers
 			return Ok(response);
 		}
 
-		/*
+		
 		[HttpPost("Login")]
 		public async Task<ActionResult<ServiceResponse<string>>> Login(UserLogin request)
 		{
@@ -39,7 +39,7 @@ namespace HomeCookedHub.Server.Controllers
 			}
 			return Ok(response);
 		}
-
+		/*
 		[HttpPost("change-password"), Authorize]
 		public async Task<ActionResult<ServiceResponse<bool>>> ChangePassword([FromBody] string newPassword)
 		{
