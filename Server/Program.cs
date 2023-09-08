@@ -1,7 +1,9 @@
 global using HomeCookedHub.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using HomeCookedHub.Server.Data;
+global using HomeCookedHub.Server.Services.AuthService;
 using Microsoft.AspNetCore.ResponseCompression;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 

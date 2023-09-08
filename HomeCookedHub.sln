@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCookedHub.Server", "Server\HomeCookedHub.Server.csproj", "{B2FE95B2-E05A-4778-AE78-D770A91D6210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeCookedHub.Server", "Server\HomeCookedHub.Server.csproj", "{B2FE95B2-E05A-4778-AE78-D770A91D6210}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCookedHub.Client", "Client\HomeCookedHub.Client.csproj", "{8A5CF2D9-BCE3-466D-BF42-BCEA04DD5C15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeCookedHub.Client", "Client\HomeCookedHub.Client.csproj", "{8A5CF2D9-BCE3-466D-BF42-BCEA04DD5C15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeCookedHub.Shared", "Shared\HomeCookedHub.Shared.csproj", "{A7B86B39-5D55-48B7-AA9D-1DD04656155F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeCookedHub.Shared", "Shared\HomeCookedHub.Shared.csproj", "{A7B86B39-5D55-48B7-AA9D-1DD04656155F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
