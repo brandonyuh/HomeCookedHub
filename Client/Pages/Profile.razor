@@ -1,9 +1,59 @@
 ﻿@page "/profile"
 @attribute [Authorize]
+@inject HttpClient Http
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <AuthorizeView>
-	<h3>Hi <i>@context.User.Identity.Name</i>.</h3>
+	<h3>Hi <i>@name</i>.</h3>
+	<h4>Your email is <i>@email</i></h4>
+	<img src="@image" />
+	<br/>
+	<label for="images">Image</label>
+	<InputFile id="images" OnChange="OnFileChange" class="form-control"></InputFile>
+	
+
 </AuthorizeView>
 @code {
+	//@context.User.Identity.Name
+	User user = null;
+	String email;
+	String name;
+	String image;
+	int id;
+	protected override async Task OnInitializedAsync()
+	{
+		//User user = await Http.GetFromJsonAsync<List<User>>("api/User");
+		var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+		var emailAuth = authState.User;
+
+		if (emailAuth.Identity.IsAuthenticated)
+		{
+			email = emailAuth.Identity.Name;
+		}
+		user = await Http.GetFromJsonAsync<User>($"api/User/{email}");
+		name = user.Name;
+		image = user.ProfilePicture;
+		id = user.Id;
+	}
+
+
+	async Task OnFileChange(InputFileChangeEventArgs e)
+	{
+		var format = "image/png";
+		foreach (var file in e.GetMultipleFiles(int.MaxValue))
+		{
+			var resizedImage = await file.RequestImageFileAsync(format, 200, 200);
+			var buffer = new byte[resizedImage.Size];
+			await resizedImage.OpenReadStream().ReadAsync(buffer);
+			var imageData = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
+			image = imageData;
+			user.ProfilePicture = image;
+			
+			await Http.PostAsJsonAsync<User>($"api/User/", user);
+
+		}
+	}
+
+
 
 }

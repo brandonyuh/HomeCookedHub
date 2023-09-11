@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeCookedHub.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230908074454_Init")]
+    [Migration("20230910043237_Init")]
     partial class Init
     {
         /// <inheritdoc />
