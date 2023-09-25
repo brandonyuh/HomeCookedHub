@@ -2,8 +2,7 @@ global using HomeCookedHub.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using HomeCookedHub.Server.Data;
 global using HomeCookedHub.Server.Services.AuthService;
-using Microsoft.AspNetCore.ResponseCompression;
-
+using HomeCookedHub.Server.Services.EmailService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +20,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
 
